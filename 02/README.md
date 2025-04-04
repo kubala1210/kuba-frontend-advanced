@@ -1,0 +1,43 @@
+> :white_check_mark: *Jeśli będziesz mieć problem z rozwiązaniem tego zadania, poproś o pomoc na odpowiednim kanale na Slacku, tj. `s8e06-python-frontend-advanced` (dotyczy [mentee](https://devmentor.pl/mentoring/)) lub na ogólnodostępnej i bezpłatnej [społeczności na Discordzie](https://devmentor.pl/discord). Pamiętaj, aby treść Twojego wpisu spełniała [odpowiednie kryteria](https://devmentor.pl/jak-prosic-o-pomoc/).*
+
+&nbsp;
+
+# `#02` Python: Zaawansowany frontend
+
+1. Napisz funkcję, która utworzy i zwróci tablicę z 20 elementami wylosowanymi z podanego zakresu. Zakres mają określać dwa parametry:
+- liczba minimalna,
+- liczba maksymalna. 
+
+W ciele tej funkcji wykorzystaj pętlę `for` oraz obiekt `Math` (przykład funkcji losującej liczby z zadanego zakresu znajdziesz w pliku `app.js`).
+
+Poniżej przedstawiam przykładowe działanie takiej funkcji:
+```
+const arr = createArray(1, 100);
+console.log(arr); // [1, 4, 34, 12, 16, 45, 12, 38, 78, 99, 1, 84, 44, 61, 16, 45, 33, 31, 68, 93 ]
+```
+
+2. Napisz kolejną funkcję, która posortuje liczby z otrzymanej powyżej tablicy od wartości największej do najmniejszej i zwróci tablicę zawierającą tylko 10 największych liczb. W ciele funkcji możesz użyć metod `.sort()` oraz `.slice()`.
+
+Poniżej przedstawiam przykładowe działanie takiej funkcji:
+```
+const largest = getLargest(arr);
+console.log(largest); // [99, 93, 84, 78, 68, 61, 45, 45, 44, 38]
+```
+
+3. Ostatnia funkcja ma obliczać [średnią arytmetyczną](https://pl.wikipedia.org/wiki/%C5%9Arednia_arytmetyczna) z liczb przechowyanych w przekazanej przez parametr tablicy. Możesz do tego wykorzystać `.forEach()` lub `.reduce()`.
+
+Przykładowe działanie takiej funkcji to:
+```
+const avg = getAvg([1, 2, 3, 4, 5]);
+console.log(avg); // 3
+```
+
+4. Wykorzystaj napisane funkcje w taki sposób, aby utworzyć tablicę składającą się z 20 losowych liczb z przedziału od 10 do 200. Z utworzonej tablicy wybiesz 10 największych i obliczych ich średnią arytmetyczną.
+
+Zadbaj o odpowiednie nazwy dla funkcji - nie muszą być one identyczne jak w przykładach.
+
+
+&nbsp;
+> :no_entry: *Jeśli nie posiadasz materiałów do tego zadania tj. **PDF, projekt + Code Review**, znajdziesz je na stronie [devmentor.pl](https://devmentor.pl/workshop-python-frontend-advanced)*
+
+> :arrow_left: [*poprzednie zadanie*](./../01) | [*następne zadanie*](./../03) :arrow_right:
