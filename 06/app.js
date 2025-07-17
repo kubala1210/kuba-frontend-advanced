@@ -12,6 +12,7 @@ buttonList.forEach(function (button) {
     button.addEventListener('click', afterClick)
 });
 
+
 // counter = counter + 1
 
 // const bodyEl = document.querySelector('body');
