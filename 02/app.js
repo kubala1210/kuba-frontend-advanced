@@ -1,13 +1,11 @@
-const newArray = [];
 function randomNumber(min, max) {
+    const newArray = []
     for (let i = 1; i <= 20; i++) {
         const newNumber = Math.round((Math.random() * (max - min)) + min);
         newArray.push(newNumber);
     };
-    console.log(newArray);
+    return newArray;
 };
-
-randomNumber(1, 100);
 
 function getLargest(arr, n) {
     const largestNums = [];
@@ -19,4 +17,8 @@ function getLargest(arr, n) {
     return largestNums;
 }
 
-console.log(getLargest(newArray, 10));
+const arr1 = randomNumber(1, 100);
+console.log(getLargest(arr1, 10));
+
+const arr2 = randomNumber(2, 100);
+console.log(getLargest(arr2, 10));
