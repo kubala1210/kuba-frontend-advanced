@@ -1,10 +1,17 @@
 console.log('DOM');
 
-const form = document.querySelector('form');
+const formEl = document.querySelector('form');
+const ulEl = document.querySelector('ul');
 
-form.setAttribute('novalidate', true);
+if (formEl) {
+    formEl.addEventListener('submit', handleSubmit)
+};
 
-form.addEventListener('submit', function (e) {
+function handleSubmit(e) {
+    e.preventDefault();
+    const errors = [];
+
+    ulEl.innerHTML = '';
 
     const nameInfo = document.getElementsByName('firstName')[0].value;
     const lastNameInfo = document.getElementsByName('lastName')[0].value;
@@ -14,10 +21,6 @@ form.addEventListener('submit', function (e) {
     const zipInfo = document.getElementsByName('zip')[0].value;
     const cityInfo = document.getElementsByName('city')[0].value;
     const regionInfo = document.getElementsByName('voivodeship')[0].value;
-
-    const errorElement = document.querySelector('.messages');
-
-    const errors = [];
 
     if (nameInfo === '') {
         errors.push('Puste pole imienia')
@@ -39,12 +42,8 @@ form.addEventListener('submit', function (e) {
         errors.push('podany numer ulicy nie jest liczbą')
     };
 
-    if (flatNumberInfo === '') {
-        errors.push('puste pole numeru ulicy')
-    };
-
-    if (isNaN(flatNumberInfo)) {
-        errors.push('podany numer ulicy nie jest liczbą')
+    if (flatNumberInfo !== '' && (isNaN(flatNumberInfo) || Number(flatNumberInfo) <= 0)) {
+        errors.push('Numer mieszkania musi być liczbą większą od zera (jeśli podany)');
     };
 
     if (cityInfo === '') {
@@ -55,17 +54,21 @@ form.addEventListener('submit', function (e) {
         errors.push('puste pole nazwy województwa')
     };
 
-    const errorList = function (err) {
-        const liElement = document.createElement('li');
-        liElement.innerText = err;
-        errorElement.appendChild(liElement);
-    }
+    const zipRegex = /^[0-9]{2}-[0-9]{3}$/;
+    if (!zipRegex.test(zipInfo)) {
+        errors.push('Kod pocztowy musi mieć format 00-000.')
+    };
 
-    if (errors.length > 0) {
-        e.preventDefault();
-        errors.forEach(errorList);
-        alert('Podane dane są nieprawidłowe')
+    if (errors.length === 0) {
+        alert('Formularz wypełniony poprawnie')
+        Array.from(formEl.elements).forEach(function (el) {
+            el.value = ''
+        })
     } else {
-        alert("podane dane są prawidłowe")
+        errors.forEach(function (text) {
+            const liEl = document.createElement('li');
+            liEl.innerText = text;
+            ulEl.appendChild(liEl);
+        });
     }
-})
+};
